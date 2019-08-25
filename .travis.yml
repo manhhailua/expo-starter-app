@@ -1,0 +1,27 @@
+language: node_js
+
+node_js:
+  - lts/*
+
+cache:
+  directories:
+    - $HOME/.cache/yarn
+
+jobs:
+  include:
+    - stage: test
+      script: sh scripts/test.sh
+    - stage: release
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: sh scripts/deploy.sh
+
+stages:
+  - name: test
+  - name: release
+    if: branch = master
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
