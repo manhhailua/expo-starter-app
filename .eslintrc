@@ -21,14 +21,16 @@
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-native"],
+  "plugins": ["react", "react-native", "react-hooks"],
   "rules": {
     "react/jsx-filename-extension": [
       2,
       {
         "extensions": [".tsx"]
       }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error"
   },
   "settings": {
     "import/resolver": {
