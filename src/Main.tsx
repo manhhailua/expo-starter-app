@@ -2,21 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
 
-export default function App() {
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
+
+function Main(): JSX.Element {
   return (
     <ThemeProvider>
       <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
+        <Text>Open up src/Main.tsx to start working on your app!</Text>
       </View>
     </ThemeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default Main;
