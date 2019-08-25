@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ThemeProvider } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,12 +10,14 @@ const styles = StyleSheet.create({
 });
 
 function Main(): JSX.Element {
+  useEffect((): void => {
+    // do something
+  }, []);
+
   return (
-    <ThemeProvider>
-      <View style={styles.container}>
-        <Text>Open up src/Main.tsx to start working on your app!</Text>
-      </View>
-    </ThemeProvider>
+    <View style={styles.container}>
+      <Text>Open up src/Main.tsx to start working on your app!</Text>
+    </View>
   );
 }
 

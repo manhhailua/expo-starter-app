@@ -1,13 +1,25 @@
 {
+  "name": "expo-starter-app",
+  "version": "0.0.0",
+  "description": "A no headache starter app for react native expo.",
+  "license": "MIT",
+  "repository": "https://github.com/manhhailua/expo-starter-app.git",
+  "author": {
+    "email": "manhhailua@gmail.com",
+    "name": "Manhhailua",
+    "url": "https://manhpt.com"
+  },
   "scripts": {
+    "commit": "npx git-cz",
     "lint": "npm run lint:eslint:fix -- .",
-    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern static/ --ext .tsx,.ts",
+    "lint:eslint": "eslint --ignore-path .gitignore --ext .tsx,.ts",
     "lint:eslint:fix": "npm run lint:eslint -- --fix",
     "run:android": "react-native run-android",
     "run:ios": "react-native run-ios",
     "run:web": "expo start --web",
     "start": "react-native start",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch"
@@ -40,13 +52,46 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "eslint-plugin-react-native": "^3.7.0",
+    "husky": "^3.0.4",
     "jest-expo": "^34.0.1",
+    "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
     "react-test-renderer": "^16.9.0",
+    "semantic-release": "^15.13.24",
     "typescript": "^3.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "jest": {
     "preset": "jest-expo"
   },
-  "private": true
+  "private": true,
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "README.md",
+            "yarn.lock"
+          ]
+        }
+      ]
+    ]
+  }
 }
